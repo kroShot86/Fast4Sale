@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fast4Sale"
         mc:Ignorable="d"
-                Title="Объявления"
-        Height="600" Width="900" Background="#F0F2F5">
+        Title="Объявления"
+        WindowStartupLocation="CenterScreen"
+        Height="600" Width="900" Background="#0F172A">
 
     <DockPanel Margin="25">
 

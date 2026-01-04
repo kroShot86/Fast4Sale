@@ -23,5 +23,22 @@ namespace Fast4Sale
         {
             InitializeComponent();
         }
+
+        private void Kreate_Click(object sender, RoutedEventArgs e)
+        {
+            if ( (Login.Text != "") && (Email.Text != "") && (Parol.Text != "") )
+            {
+                BD bd = new BD();
+
+                bd.SaveUser(Login.Text, Email.Text, Parol.Text);
+
+                MessageBox.Show("Зареган");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Обломинго");
+            }
+        }
     }
 }

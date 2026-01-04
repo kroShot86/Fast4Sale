@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fast4Sale"
         mc:Ignorable="d"
-                Title="Добавить объект"
-        Height="600" Width="500" Background="#F0F2F5">
+        Title="Добавить объект"
+        Height="600" Width="500" Background="#0F172A">
 
     <ScrollViewer>
         <Grid Margin="40" HorizontalAlignment="Center">

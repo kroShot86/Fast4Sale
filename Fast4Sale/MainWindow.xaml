@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fast4Sale"
         mc:Ignorable="d"
-                Title="Fast4Sale" Height="550" Width="850" 
+        Title="Fast4Sale" Height="550" Width="850" 
         WindowStartupLocation="CenterScreen"
         Background="#0F172A">
 
@@ -14,9 +14,14 @@
         <Border Background="#1E293B" Height="70" VerticalAlignment="Top">
             <Grid>
                 <TextBlock Text="🏠 Fast4Sale" FontSize="26" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Margin="30,0"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0">
-                    <Button Content="Войти" Width="100" Height="35" Background="Transparent" Foreground="#60A5FA" BorderBrush="#60A5FA" BorderThickness="1" Margin="0,0,10,0"/>
-                    <Button Content="Регистрация" Width="120" Height="35" Background="#3B82F6" Foreground="White" BorderThickness="0"/>
+                <StackPanel x:Name="p_nereg" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0">
+                    <Button x:Name="Log" Content="Войти" Width="100" Height="35" Background="Transparent" Foreground="#60A5FA" BorderBrush="#60A5FA" BorderThickness="1" Margin="0,0,10,0" Click="Log_Click" FontSize="18"/>
+                    <Button x:Name="Reg" Content="Регистрация" Width="110" Height="35" Background="#3B82F6" Foreground="White" BorderThickness="0" Click="Reg_Click" FontSize="18"/>
+                </StackPanel>
+                <StackPanel x:Name="p_reg" Visibility="Collapsed" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0">
+                    <TextBlock x:Name="NikName" Text="Добро пожаловать " Background="Transparent" Foreground="#FBBF24" Margin="50,10,30,5" HorizontalAlignment="Right" FontSize="18"/>
+                    <Button x:Name="Exit" Content="Выйти из аккаунта"  Background="Transparent" Foreground="#60A5FA" BorderBrush="#60A5FA" BorderThickness="1" FontSize="18" Click="Exit_Click"/>
+                    <Button x:Name="Delete" Content="Удалить аккаунт"  Background="#3B82F6" Foreground="White" BorderThickness="0" FontSize="18" Margin="10,0,0,0" Click="Delete_Click"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -24,10 +29,10 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Добро пожаловать в Fast4Sale" FontSize="32" FontWeight="Bold" Foreground="White" TextAlignment="Center" Margin="0,0,0,15"/>
             <TextBlock Text="Покупка и продажа недвижимости" FontSize="18" Foreground="#94A3B8" TextAlignment="Center" Margin="0,0,0,40"/>
-            <Button Content="🔍 Просмотреть объявления" Width="280" Height="50" Background="#3B82F6" Foreground="White" FontSize="17" FontWeight="Bold" BorderThickness="0" Margin="0,0,0,30"/>
+            <Button x:Name="k_spisky_ob" Content="🔍 Просмотреть объявления" Width="280" Height="50" Background="#3B82F6" Foreground="White" FontSize="17" FontWeight="Bold" BorderThickness="0" Margin="0,0,0,30" Click="k_spisky_ob_Click"/>
         </StackPanel>
 
-        <TextBlock Text="© 2024 Fast4Sale. Все права защищены." Foreground="#64748B" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30"/>
+        <TextBlock x:Name="user" Text="© 2026 Fast4Sale. Все права защищены." Foreground="#64748B" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30" MouseLeftButtonDown="user_MouseLeftButtonDown"/>
 
     </Grid>
 
