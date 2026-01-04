@@ -1,0 +1,34 @@
+﻿<Window x:Class="Fast4Sale.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fast4Sale"
+        mc:Ignorable="d"
+                Title="Fast4Sale" Height="550" Width="850" 
+        WindowStartupLocation="CenterScreen"
+        Background="#0F172A">
+
+    <Grid>
+
+        <Border Background="#1E293B" Height="70" VerticalAlignment="Top">
+            <Grid>
+                <TextBlock Text="🏠 Fast4Sale" FontSize="26" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Margin="30,0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0">
+                    <Button Content="Войти" Width="100" Height="35" Background="Transparent" Foreground="#60A5FA" BorderBrush="#60A5FA" BorderThickness="1" Margin="0,0,10,0"/>
+                    <Button Content="Регистрация" Width="120" Height="35" Background="#3B82F6" Foreground="White" BorderThickness="0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Добро пожаловать в Fast4Sale" FontSize="32" FontWeight="Bold" Foreground="White" TextAlignment="Center" Margin="0,0,0,15"/>
+            <TextBlock Text="Покупка и продажа недвижимости" FontSize="18" Foreground="#94A3B8" TextAlignment="Center" Margin="0,0,0,40"/>
+            <Button Content="🔍 Просмотреть объявления" Width="280" Height="50" Background="#3B82F6" Foreground="White" FontSize="17" FontWeight="Bold" BorderThickness="0" Margin="0,0,0,30"/>
+        </StackPanel>
+
+        <TextBlock Text="© 2024 Fast4Sale. Все права защищены." Foreground="#64748B" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30"/>
+
+    </Grid>
+
+</Window>

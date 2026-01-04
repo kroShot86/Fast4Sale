@@ -1,0 +1,56 @@
+﻿<Window x:Class="Fast4Sale.Spisok_ob"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fast4Sale"
+        mc:Ignorable="d"
+                Title="Объявления"
+        Height="600" Width="900" Background="#F0F2F5">
+
+    <DockPanel Margin="25">
+
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0,0,0,20">
+            <TextBox Width="260" Height="36" VerticalContentAlignment="Center"/>
+            <ComboBox Width="160" Height="36" Margin="10,0">
+                <ComboBoxItem Content="Квартира"/>
+                <ComboBoxItem Content="Дом"/>
+                <ComboBoxItem Content="Коммерческая"/>
+            </ComboBox>
+            <Button Width="120" Content="Фильтр"/>
+        </StackPanel>
+
+        <ScrollViewer>
+            <ItemsControl>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border CornerRadius="10" Background="White"
+                                Padding="12" Margin="0,0,0,12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Background="#D0D3D8"
+                                        CornerRadius="8"
+                                        Width="140" Height="100"/>
+
+                                <StackPanel Grid.Column="1" Margin="15,0">
+                                    <TextBlock Text="Название объекта"
+                                               FontSize="17" FontWeight="SemiBold"/>
+                                    <TextBlock Text="Адрес" Foreground="#555"/>
+                                    <TextBlock Text="Цена: 000 000$"
+                                               Margin="0,6" FontWeight="Bold"/>
+                                    <Button Width="130" Content="Подробнее"/>
+                                </StackPanel>
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+    </DockPanel>
+</Window>
