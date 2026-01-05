@@ -22,7 +22,15 @@ namespace Fast4Sale
     {
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+
+            if (Global.ID != -1)
+            {
+                p_nereg.Visibility = Visibility.Collapsed;
+                p_reg.Visibility = Visibility.Visible;
+                BD bd = new BD();
+                NikName.Text = "Добро пожаловать " + bd.GetUsername(Global.ID);
+            }
         }
 
         private void k_spisky_ob_Click(object sender, RoutedEventArgs e)

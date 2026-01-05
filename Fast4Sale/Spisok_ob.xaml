@@ -11,30 +11,35 @@
 
     <Grid>
         <Border Background="#0F172A" Height="70" VerticalAlignment="Top" BorderBrush="#334155" BorderThickness="0,0,0,1">
-            <StackPanel Orientation="Horizontal" Margin="20">
+            <StackPanel Orientation="Horizontal" Margin="10" Cursor="Hand">
 
-                <Button x:Name="Add" Content="➕ Добавить" Width="120" Height="25" Background="#10B981" Foreground="White" FontWeight="Bold" Margin="0,0,20,0" Click="Add_Click"/>
+                <Button x:Name="Add" Content="➕ Добавить" Width="120" Height="25" Background="#10B981" Foreground="White" FontWeight="Bold" Margin="0,0,10,0" Click="Add_Click"/>
 
                 <TextBlock Text="Тип:" VerticalAlignment="Center" Margin="10,0,10,0" Foreground="White"/>
-                <ComboBox Width="120" Height="30" SelectedIndex="0" Background="#334155" Foreground="Black" FontSize="15">
-
+                <ComboBox Width="100" Height="30" SelectedIndex="0" Background="#334155" Foreground="Black" FontSize="15">
                     <ComboBoxItem Content="Все" Foreground="Black" FontSize="15"/>
                     <ComboBoxItem Content="Квартира" Foreground="Black" FontSize="15"/>
                     <ComboBoxItem Content="Дом" Foreground="Black" FontSize="15"/>
-
                 </ComboBox>
 
-                <TextBlock Text="Сортировка:" VerticalAlignment="Center" Margin="30,0,10,0" Foreground="White"/>
-                <ComboBox Width="120" Height="30" Background="#334155" Foreground="Black" FontSize="15">
-                    <ComboBoxItem Content="По возрастанию цен" FontSize="15" Foreground="Black"/>
-                    <ComboBoxItem Content="По убыванию цен" FontSize="15" Foreground="Black"/>
+                <TextBlock Text="Сортировка:" VerticalAlignment="Center" Margin="20,0,10,0" Foreground="White"/>
+                <ComboBox Width="100" Height="30" Background="#334155" Foreground="Black" FontSize="15">
+                    <ComboBoxItem Content="По возрастанию" FontSize="15" Foreground="Black"/>
+                    <ComboBoxItem Content="По убыванию" FontSize="15" Foreground="Black"/>
                 </ComboBox>
 
-                <TextBlock Text="Стоимость от" VerticalAlignment="Center" Margin="20,0,10,0" Foreground="White"/>
-                <TextBox Width="80" Height="30" Background="#334155" Foreground="White" TextAlignment="Center" FontSize="16"/>
+                <TextBlock Text="Стоимость от" VerticalAlignment="Center" Margin="8,0,10,0" Foreground="White"/>
+                <TextBox Width="80" Height="30" Background="#334155" Foreground="White" TextAlignment="Center" FontSize="16" PreviewTextInput="OnlyNum"/>
                 
-                <TextBlock Text="до" VerticalAlignment="Center" Margin="10,0,10,0" Foreground="White"/>
-                <TextBox Width="80" Height="30" Background="#334155" Foreground="White" TextAlignment="Center" FontSize="16"/>
+                <TextBlock Text="до" VerticalAlignment="Center" Margin="5,0,5,0" Foreground="White"/>
+                <TextBox Width="80" Height="30" Background="#334155" Foreground="White" TextAlignment="Center" FontSize="16" PreviewTextInput="OnlyNum"/>
+
+                <Button x:Name="Home" Width="121" Height="35" Background="#3B82F6" Foreground="White" FontSize="14" FontWeight="SemiBold" BorderThickness="0" Margin="10,0,10,0" Cursor="Hand" Click="Home_Click">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="🏠" Margin="0,0,6,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Главное меню" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
 
             </StackPanel>
         </Border>

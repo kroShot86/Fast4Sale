@@ -36,8 +36,7 @@
 
                                 <StackPanel Grid.Row="0" Grid.Column="0">
                                     <TextBlock Text="Название объекта*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
-                                    <TextBox x:Name="DescriptionBox" Height="120" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
-                                    <TextBox x:Name="TitleBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                    <TextBox x:Name="Name" Height="120" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="0" Grid.Column="2">
@@ -70,22 +69,22 @@
                             <WrapPanel>
                                 <StackPanel Width="200" Margin="0,0,30,15">
                                     <TextBlock Text="Площадь (м²)*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
-                                    <TextBox x:Name="AreaBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                    <TextBox x:Name="AreaBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569" PreviewTextInput="OnlyNum"/>
                                 </StackPanel>
 
                                 <StackPanel Width="200" Margin="0,0,30,15">
                                     <TextBlock Text="Количество комнат*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
-                                    <TextBox x:Name="RoomsBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                    <TextBox x:Name="RoomsBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569" PreviewTextInput="OnlyNum"/>
                                 </StackPanel>
 
                                 <StackPanel Width="200" Margin="0,0,30,15">
                                     <TextBlock Text="Этаж" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
-                                    <TextBox x:Name="FloorBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                    <TextBox x:Name="FloorBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569" PreviewTextInput="OnlyNum"/>
                                 </StackPanel>
 
                                 <StackPanel Width="200" Margin="0,0,0,15">
                                     <TextBlock Text="Всего этажей" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
-                                    <TextBox x:Name="TotalFloorsBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                    <TextBox x:Name="TotalFloorsBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569" PreviewTextInput="OnlyNum"/>
                                 </StackPanel>
                             </WrapPanel>
                         </StackPanel>
@@ -98,7 +97,7 @@
                             <WrapPanel>
                                 <StackPanel Width="300" Margin="0,0,30,15">
                                     <TextBlock Text="Цена (₽)*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
-                                    <TextBox x:Name="PriceBox" Height="40" FontSize="14" FontWeight="Bold" Foreground="#10B981" Background="#334155" BorderBrush="#475569"/>
+                                    <TextBox x:Name="PriceBox" Height="40" FontSize="14" FontWeight="Bold" Foreground="#10B981" Background="#334155" BorderBrush="#475569" PreviewTextInput="OnlyNum"/>
                                 </StackPanel>
 
                                 <StackPanel Width="300" Margin="0,0,0,15">
@@ -108,7 +107,7 @@
 
                                 <StackPanel Width="300" Margin="0,0,30,0">
                                     <TextBlock Text="Телефон*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
-                                    <TextBox x:Name="PhoneBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                    <TextBox x:Name="PhoneBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569" PreviewTextInput="OnlyNum"/>
                                 </StackPanel>
 
                                 <StackPanel Width="300" Margin="0,0,0,0">
@@ -139,7 +138,8 @@
                     </Border>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button x:Name="PublishButton" Content="Опубликовать" Width="180" Height="50" Background="#10B981" Foreground="White" FontSize="16" FontWeight="Bold" Margin="0,0,15,0"/>
+                        <Button x:Name="PublishButton" Content="Опубликовать" Width="180" Height="50" Background="#10B981" Foreground="White" FontSize="16" FontWeight="Bold" Margin="0,0,15,0" Click="PublishButton_Click"/>
+                        <Button x:Name="Cancel" Content="Отмена" Width="180" Height="50" Background="Red" Foreground="White" FontSize="16" FontWeight="Bold" Margin="0,0,15,0" Click="Cancel_Click"/>
                     </StackPanel>
 
                     <TextBlock Text="* Обязательные для заполнения поля" FontSize="12" Foreground="#94A3B8" HorizontalAlignment="Center" Margin="0,15,0,0"/>

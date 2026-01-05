@@ -67,7 +67,7 @@ namespace Fast4Sale
             TextBlock addressText = new TextBlock
             {
                 Text = address,
-                Foreground = new SolidColorBrush(Color.FromRgb(203, 213, 225)), // #CBD5E1
+                Foreground = new SolidColorBrush(Color.FromRgb(203, 213, 225)),
                 Margin = new Thickness(0, 5, 0, 0)
             };
 
@@ -76,7 +76,7 @@ namespace Fast4Sale
                 Text = price,
                 FontSize = 14,
                 FontWeight = FontWeights.Bold,
-                Foreground = new SolidColorBrush(Color.FromRgb(16, 185, 129)), // #10B981
+                Foreground = new SolidColorBrush(Color.FromRgb(16, 185, 129)),
                 Margin = new Thickness(0, 10, 0, 0)
             };
 
@@ -85,7 +85,7 @@ namespace Fast4Sale
                 Content = "Подробнее",
                 Width = 100,
                 Height = 25,
-                Background = new SolidColorBrush(Color.FromRgb(59, 130, 246)), // #3B82F6
+                Background = new SolidColorBrush(Color.FromRgb(59, 130, 246)),
                 Foreground = Brushes.White,
                 Margin = new Thickness(0, 15, 0, 0)
             };
@@ -107,12 +107,39 @@ namespace Fast4Sale
             ListPanel.Children.Add(card);
         }
 
+        private void OnlyNum(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            New_ob new_Ob = new New_ob();
-            new_Ob.ShowDialog();
+            if(Global.ID != -1)
+            {
+                New_ob new_Ob = new New_ob();
+                new_Ob.ShowDialog();
 
-            //AddCard("название", "адрес", "10000");
+                if (Global.Check)
+                {
+                    AddCard(Global.Name, Global.Address, Global.Price);
+                    Global.Check = false;
+                    Global.Clear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Только авторизированные пользователи могут выстявлять недвижимость");
+            }
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }
