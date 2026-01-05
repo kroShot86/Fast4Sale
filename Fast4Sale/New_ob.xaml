@@ -5,37 +5,149 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fast4Sale"
         mc:Ignorable="d"
-        Title="Добавить объект"
-        Height="600" Width="500" Background="#0F172A">
+        Title="Подать объявление"
+        Height="700" Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="#0F172A">
 
-    <ScrollViewer>
-        <Grid Margin="40" HorizontalAlignment="Center">
-            <Border Background="White" Padding="30" CornerRadius="12" Width="380">
-
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="30">
+            <Border Background="#1E293B" CornerRadius="12" BorderBrush="#334155" BorderThickness="1" Padding="40">
                 <StackPanel>
-                    <TextBlock Text="Добавить недвижимость"
-                               FontSize="28" FontWeight="SemiBold"
-                               Margin="0,0,0,20"/>
+                    <StackPanel Margin="0,0,0,30">
+                        <TextBlock Text="Подать объявление" FontSize="28" FontWeight="Bold" Foreground="White"/>
+                        <TextBlock Text="Заполните все поля для публикации" FontSize="14" Foreground="#94A3B8"/>
+                    </StackPanel>
 
-                    <TextBlock Text="Название"/>
-                    <TextBox Margin="0,5,0,10"/>
+                    <Border BorderBrush="#334155" BorderThickness="0,0,0,1" Padding="0,0,0,20" Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="Основная информация" FontSize="16" FontWeight="SemiBold" Foreground="White" Margin="0,0,0,15"/>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Адрес"/>
-                    <TextBox Margin="0,5,0,10"/>
+                                <StackPanel Grid.Row="0" Grid.Column="0">
+                                    <TextBlock Text="Название объекта*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
+                                    <TextBox x:Name="DescriptionBox" Height="120" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+                                    <TextBox x:Name="TitleBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                </StackPanel>
 
-                    <TextBlock Text="Цена"/>
-                    <TextBox Margin="0,5,0,10"/>
+                                <StackPanel Grid.Row="0" Grid.Column="2">
+                                    <TextBlock Text="Тип недвижимости*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
+                                    <ComboBox x:Name="TypeBox" Height="40" Background="Gray" Foreground="Black" BorderBrush="#475569" FontSize="15">
+                                        <ComboBoxItem Content="Квартира" FontSize="15" Foreground="Black"/>
+                                        <ComboBoxItem Content="Дом" FontSize="15" Foreground="Black"/>
+                                        <ComboBoxItem Content="Комната" FontSize="15" Foreground="Black"/>
+                                        <ComboBoxItem Content="Офис" FontSize="15" Foreground="Black"/>
+                                        <ComboBoxItem Content="Участок" FontSize="15" Foreground="Black"/>
+                                    </ComboBox>
+                                </StackPanel>
 
-                    <TextBlock Text="Описание"/>
-                    <TextBox Height="120" AcceptsReturn="True" Margin="0,5,0,10"/>
+                                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,15,0,0">
+                                    <TextBlock Text="Адрес*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
+                                    <TextBox x:Name="AddressBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                </StackPanel>
 
-                    <TextBlock Text="Изображение"/>
-                    <Button Content="Загрузить" Height="40" Width="150" Margin="0,5,0,20"/>
+                                <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,15,0,0">
+                                    <TextBlock Text="Описание*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
+                                    <TextBox x:Name="Description" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
 
-                    <Button Content="Создать объявление" Height="48"/>
+                    <Border BorderBrush="#334155" BorderThickness="0,0,0,1" Padding="0,0,0,20" Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="Характеристики" FontSize="16" FontWeight="SemiBold" Foreground="White" Margin="0,0,0,15"/>
+                            <WrapPanel>
+                                <StackPanel Width="200" Margin="0,0,30,15">
+                                    <TextBlock Text="Площадь (м²)*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
+                                    <TextBox x:Name="AreaBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                </StackPanel>
+
+                                <StackPanel Width="200" Margin="0,0,30,15">
+                                    <TextBlock Text="Количество комнат*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
+                                    <TextBox x:Name="RoomsBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                </StackPanel>
+
+                                <StackPanel Width="200" Margin="0,0,30,15">
+                                    <TextBlock Text="Этаж" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
+                                    <TextBox x:Name="FloorBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                </StackPanel>
+
+                                <StackPanel Width="200" Margin="0,0,0,15">
+                                    <TextBlock Text="Всего этажей" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
+                                    <TextBox x:Name="TotalFloorsBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                </StackPanel>
+                            </WrapPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border BorderBrush="#334155" BorderThickness="0,0,0,1" Padding="0,0,0,20" Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="Цена и контакты" FontSize="16" FontWeight="SemiBold" Foreground="White" Margin="0,0,0,15"/>
+                            
+                            <WrapPanel>
+                                <StackPanel Width="300" Margin="0,0,30,15">
+                                    <TextBlock Text="Цена (₽)*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
+                                    <TextBox x:Name="PriceBox" Height="40" FontSize="14" FontWeight="Bold" Foreground="#10B981" Background="#334155" BorderBrush="#475569"/>
+                                </StackPanel>
+
+                                <StackPanel Width="300" Margin="0,0,0,15">
+                                    <TextBlock Text="Контактное лицо*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
+                                    <TextBox x:Name="ContactBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                </StackPanel>
+
+                                <StackPanel Width="300" Margin="0,0,30,0">
+                                    <TextBlock Text="Телефон*" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
+                                    <TextBox x:Name="PhoneBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                </StackPanel>
+
+                                <StackPanel Width="300" Margin="0,0,0,0">
+                                    <TextBlock Text="Email" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
+                                    <TextBox x:Name="EmailBox" Height="40" FontSize="14" Background="#334155" Foreground="White" BorderBrush="#475569"/>
+                                </StackPanel>
+                            </WrapPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Padding="0,0,0,20" Margin="0,0,0,30">
+                        <StackPanel>
+                            <TextBlock Text="Изображения" FontSize="16" FontWeight="SemiBold" Foreground="White" Margin="0,0,0,15"/>
+
+                            <TextBlock Text="Добавьте до 10 фотографий" FontSize="13" Foreground="#94A3B8" Margin="0,0,0,15"/>
+
+                            <Border BorderBrush="#475569" BorderThickness="2" CornerRadius="8" Height="150" Background="#334155">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="➕" FontSize="36" Foreground="#94A3B8" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Загрузить фотографии" FontSize="14" Foreground="White" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Перетащите или нажмите для выбора" FontSize="12" Foreground="#94A3B8" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+
+                            <WrapPanel x:Name="ImagesPanel" Margin="0,15,0,0"/>
+                            
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="PublishButton" Content="Опубликовать" Width="180" Height="50" Background="#10B981" Foreground="White" FontSize="16" FontWeight="Bold" Margin="0,0,15,0"/>
+                    </StackPanel>
+
+                    <TextBlock Text="* Обязательные для заполнения поля" FontSize="12" Foreground="#94A3B8" HorizontalAlignment="Center" Margin="0,15,0,0"/>
+
                 </StackPanel>
-
             </Border>
+
         </Grid>
     </ScrollViewer>
+
 </Window>

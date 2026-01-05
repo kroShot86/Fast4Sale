@@ -37,7 +37,6 @@ namespace Fast4Sale
                 {
                     MessageBox.Show("Ок");
                     Global.ID = bd.GetID(Log.Text);
-                    MessageBox.Show(Convert.ToString(Global.ID));
                     this.Close();
                 }
                 else

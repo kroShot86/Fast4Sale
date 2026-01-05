@@ -5,53 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fast4Sale"
         mc:Ignorable="d"
-        Title="Объявления"
+        Title="Объявления" Height="600" Width="900" 
         WindowStartupLocation="CenterScreen"
-        Height="600" Width="900" Background="#0F172A">
+        Background="#1E293B">
 
-    <DockPanel Margin="25">
+    <Grid>
+        <Border Background="#0F172A" Height="70" VerticalAlignment="Top" BorderBrush="#334155" BorderThickness="0,0,0,1">
+            <StackPanel Orientation="Horizontal" Margin="20">
 
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0,0,0,20">
-            <TextBox Width="260" Height="36" VerticalContentAlignment="Center"/>
-            <ComboBox Width="160" Height="36" Margin="10,0">
-                <ComboBoxItem Content="Квартира"/>
-                <ComboBoxItem Content="Дом"/>
-                <ComboBoxItem Content="Коммерческая"/>
-            </ComboBox>
-            <Button Width="120" Content="Фильтр"/>
-        </StackPanel>
+                <Button x:Name="Add" Content="➕ Добавить" Width="120" Height="25" Background="#10B981" Foreground="White" FontWeight="Bold" Margin="0,0,20,0" Click="Add_Click"/>
 
-        <ScrollViewer>
-            <ItemsControl>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border CornerRadius="10" Background="White"
-                                Padding="12" Margin="0,0,0,12">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="140"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                <TextBlock Text="Тип:" VerticalAlignment="Center" Margin="10,0,10,0" Foreground="White"/>
+                <ComboBox Width="120" Height="30" SelectedIndex="0" Background="#334155" Foreground="Black" FontSize="15">
 
-                                <Border Background="#D0D3D8"
-                                        CornerRadius="8"
-                                        Width="140" Height="100"/>
+                    <ComboBoxItem Content="Все" Foreground="Black" FontSize="15"/>
+                    <ComboBoxItem Content="Квартира" Foreground="Black" FontSize="15"/>
+                    <ComboBoxItem Content="Дом" Foreground="Black" FontSize="15"/>
 
-                                <StackPanel Grid.Column="1" Margin="15,0">
-                                    <TextBlock Text="Название объекта"
-                                               FontSize="17" FontWeight="SemiBold"/>
-                                    <TextBlock Text="Адрес" Foreground="#555"/>
-                                    <TextBlock Text="Цена: 000 000$"
-                                               Margin="0,6" FontWeight="Bold"/>
-                                    <Button Width="130" Content="Подробнее"/>
-                                </StackPanel>
+                </ComboBox>
 
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                <TextBlock Text="Сортировка:" VerticalAlignment="Center" Margin="30,0,10,0" Foreground="White"/>
+                <ComboBox Width="120" Height="30" Background="#334155" Foreground="Black" FontSize="15">
+                    <ComboBoxItem Content="По возрастанию цен" FontSize="15" Foreground="Black"/>
+                    <ComboBoxItem Content="По убыванию цен" FontSize="15" Foreground="Black"/>
+                </ComboBox>
+
+                <TextBlock Text="Стоимость от" VerticalAlignment="Center" Margin="20,0,10,0" Foreground="White"/>
+                <TextBox Width="80" Height="30" Background="#334155" Foreground="White" TextAlignment="Center" FontSize="16"/>
+                
+                <TextBlock Text="до" VerticalAlignment="Center" Margin="10,0,10,0" Foreground="White"/>
+                <TextBox Width="80" Height="30" Background="#334155" Foreground="White" TextAlignment="Center" FontSize="16"/>
+
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Margin="20,80,20,20">
+            <StackPanel x:Name="ListPanel">
+                
+
+            </StackPanel>
         </ScrollViewer>
 
-    </DockPanel>
+    </Grid>
 </Window>
