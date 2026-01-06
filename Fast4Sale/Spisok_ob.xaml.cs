@@ -22,6 +22,7 @@ namespace Fast4Sale
         public Spisok_ob()
         {
             InitializeComponent();
+            LoadAdvertisements();
         }
 
         private void AddCard(string title, string address, string price)
@@ -122,16 +123,41 @@ namespace Fast4Sale
                 New_ob new_Ob = new New_ob();
                 new_Ob.ShowDialog();
 
-                if (Global.Check)
-                {
-                    AddCard(Global.Name, Global.Address, Global.Price);
-                    Global.Check = false;
-                    Global.Clear();
-                }
+                LoadAdvertisements();
             }
             else
             {
                 MessageBox.Show("Только авторизированные пользователи могут выстявлять недвижимость");
+            }
+        }
+
+        private void LoadAdvertisements()
+        {
+            BD bd = new BD();
+
+            List<Advertisement> ads = bd.GetAllAdvertisements(); // Используй новый метод из BD
+
+            // Очищаем список
+            ListPanel.Children.Clear();
+
+            // Добавляем карточки из БД
+            foreach (var ad in ads)
+            {
+                AddCard(ad.Title, ad.Address, ad.Price.ToString() + "₽");
+            }
+
+            // Если нет объявлений
+            if (ads.Count == 0)
+            {
+                TextBlock noAds = new TextBlock
+                {
+                    Text = "Объявлений пока нет",
+                    Foreground = Brushes.White,
+                    FontSize = 16,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    Margin = new Thickness(0, 20, 0, 0)
+                };
+                ListPanel.Children.Add(noAds);
             }
         }
 

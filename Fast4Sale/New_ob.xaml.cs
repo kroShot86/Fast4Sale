@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,19 +46,29 @@ namespace Fast4Sale
             }
             else
             {
-                Global.Name = Name.Text;
-                Global.Address = AddressBox.Text;
-                Global.Description = Description.Text;
-                Global.Area = AreaBox.Text;
-                Global.Rooms = RoomsBox.Text;
-                Global.Floor = FloorBox.Text;
-                Global.TotalFloors = TotalFloorsBox.Text;
-                Global.Price = PriceBox.Text;
-                Global.Contact = ContactBox.Text;
-                Global.PhoneNumber = PhoneBox.Text;
-                Global.Email = EmailBox.Text;
+                string selectedType = "Квартира";
+                if (TypeBox.SelectedItem is ComboBoxItem comboBoxItem)
+                {
+                    selectedType = comboBoxItem.Content.ToString();
+                }
 
-                Global.Check = true;
+                BD bd = new BD();
+                int advertisementId = bd.SaveAdvertisement(
+                    userId: Global.ID,
+                    title: Name.Text.Trim(),
+                    address: AddressBox.Text.Trim(),
+                    description: Description.Text.Trim(),
+                    area: AreaBox.Text.Trim(),
+                    rooms: RoomsBox.Text.Trim(),
+                    floor: FloorBox.Text.Trim(),
+                    totalFloors: TotalFloorsBox.Text.Trim(),
+                    price: PriceBox.Text.Trim(),
+                    contact: ContactBox.Text.Trim(),
+                    phone: PhoneBox.Text.Trim(),
+                    email: EmailBox.Text.Trim(),
+                    type: selectedType
+                );
+
                 this.Close();
             }
         }
