@@ -78,6 +78,13 @@ namespace Fast4Sale
                 Margin = new Thickness(0, 10, 0, 0)
             };
 
+            StackPanel buttonsPanel = new StackPanel
+            {
+                Orientation = Orientation.Horizontal,
+                Margin = new Thickness(0, 15, 0, 0),
+                HorizontalAlignment = HorizontalAlignment.Left
+            };
+
             Button details = new Button
             {
                 Content = "Подробнее",
@@ -85,19 +92,85 @@ namespace Fast4Sale
                 Height = 25,
                 Background = new SolidColorBrush(Color.FromRgb(59, 130, 246)),
                 Foreground = Brushes.White,
-                Margin = new Thickness(0, 15, 0, 0)
+                Margin = new Thickness(0, 0, 10, 0)
             };
 
+            Button change = new Button
+            {
+                Content = "Редактировать",
+                Width = 100,
+                Height = 25,
+                Background = new SolidColorBrush(Color.FromRgb(245, 158, 11)),
+                Foreground = Brushes.White,
+                Margin = new Thickness(0, 0, 10, 0)
+            };
+
+            Button delete = new Button
+            {
+                Content = "Удалить",
+                Width = 100,
+                Height = 25,
+                Background = new SolidColorBrush(Color.FromRgb(239, 68, 68)),
+                Foreground = Brushes.White
+            };
+
+            buttonsPanel.Children.Add(details);
+
+            BD bD = new BD();
+            if(ad.UserId == Global.ID)
+            {
+                buttonsPanel.Children.Add(change);
+                buttonsPanel.Children.Add(delete);
+            }
+            
             details.Click += (s, e) =>
             {
                 AboutAd aboutWindow = new AboutAd(ad.Id);
                 aboutWindow.ShowDialog();
             };
 
+            change.Click += (s, e) =>
+            {
+                New_ob editWindow = new New_ob();
+                editWindow.PublishButton.Content = "Принять изменения";
+
+                editWindow.EditAdId = ad.Id;
+                editWindow.ShowDialog();
+
+                LoadAdvertisements();
+                
+
+            };
+
+            delete.Click += (s, e) =>
+            {
+                MessageBoxResult result = MessageBox.Show(
+                    $"Вы уверены, что хотите удалить объявление \"{ad.Title}\"?",
+                    "Подтверждение удаления",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    BD bd = new BD();
+                    bool success = bd.DeleteAdvertisement(ad.Id);
+
+                    if (success)
+                    {
+                        MessageBox.Show("Объявление удалено");
+                        LoadAdvertisements();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка при удалении");
+                    }
+                }
+            };
+
             info.Children.Add(titleText);
             info.Children.Add(addressText);
             info.Children.Add(priceText);
-            info.Children.Add(details);
+            info.Children.Add(buttonsPanel);
 
             grid.Children.Add(image);
             grid.Children.Add(info);

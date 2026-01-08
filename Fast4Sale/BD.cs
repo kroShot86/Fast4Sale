@@ -374,6 +374,43 @@ namespace Fast4Sale
             return null;
         }
 
+        public bool UpdateAdvertisement(int adId, string title, string address, string description,
+                                string area, string rooms, string floor, string totalFloors, string price,
+                                string contact, string phone, string email, string type)
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sql = @"
+            UPDATE Advertisements 
+            SET Title = @title, Address = @address, Description = @description, 
+                Area = @area, Rooms = @rooms, Floor = @floor, TotalFloors = @totalFloors, 
+                Price = @price, Contact = @contact, Phone = @phone, Email = @email, Type = @type
+            WHERE Id = @adId";
+
+                using (var cmd = new SQLiteCommand(sql, connection))
+                {
+                    cmd.Parameters.AddWithValue("@adId", adId);
+                    cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@address", address);
+                    cmd.Parameters.AddWithValue("@description", description);
+                    cmd.Parameters.AddWithValue("@area", area);
+                    cmd.Parameters.AddWithValue("@rooms", rooms);
+                    cmd.Parameters.AddWithValue("@floor", floor);
+                    cmd.Parameters.AddWithValue("@totalFloors", totalFloors);
+                    cmd.Parameters.AddWithValue("@price", price);
+                    cmd.Parameters.AddWithValue("@contact", contact);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@type", type);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+        }
+
         // Поиск объявлений
         public List<Advertisement> SearchAdvertisements(string searchTerm, string minPrice, string maxPrice, string type)
         {

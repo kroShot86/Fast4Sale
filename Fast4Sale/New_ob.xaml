@@ -44,9 +44,6 @@
                                     <ComboBox x:Name="TypeBox" Height="40" Background="Gray" Foreground="Black" BorderBrush="#475569" FontSize="15">
                                         <ComboBoxItem Content="Квартира" FontSize="15" Foreground="Black"/>
                                         <ComboBoxItem Content="Дом" FontSize="15" Foreground="Black"/>
-                                        <ComboBoxItem Content="Комната" FontSize="15" Foreground="Black"/>
-                                        <ComboBoxItem Content="Офис" FontSize="15" Foreground="Black"/>
-                                        <ComboBoxItem Content="Участок" FontSize="15" Foreground="Black"/>
                                     </ComboBox>
                                 </StackPanel>
 
