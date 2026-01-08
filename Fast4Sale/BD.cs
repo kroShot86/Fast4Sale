@@ -46,7 +46,6 @@ namespace Fast4Sale
                     )";
                 new SQLiteCommand(sql, connection).ExecuteNonQuery();
 
-                // Таблица объявлений (с типами TEXT для числовых полей)
                 string sqlAds = @"
                     CREATE TABLE IF NOT EXISTS Advertisements (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -71,7 +70,6 @@ namespace Fast4Sale
             }
         }
 
-        // === МЕТОДЫ ДЛЯ ПОЛЬЗОВАТЕЛЕЙ ===
 
         public void SaveUser(string username, string email, string password)
         {
@@ -139,7 +137,6 @@ namespace Fast4Sale
             {
                 connection.Open();
 
-                // Удаляем объявления пользователя
                 string sqlDeleteAds = "DELETE FROM Advertisements WHERE UserId = @id";
                 using (var cmdAds = new SQLiteCommand(sqlDeleteAds, connection))
                 {
@@ -147,7 +144,6 @@ namespace Fast4Sale
                     cmdAds.ExecuteNonQuery();
                 }
 
-                // Удаляем пользователя
                 string sqlDeleteUser = "DELETE FROM Users WHERE Id = @id";
                 using (var cmd = new SQLiteCommand(sqlDeleteUser, connection))
                 {
@@ -196,7 +192,6 @@ namespace Fast4Sale
             }
         }
 
-        // === МЕТОДЫ ДЛЯ ОБЪЯВЛЕНИЙ (с типами TEXT) ===
 
         public int SaveAdvertisement(int userId, string title, string address, string description,
                                     string area, string rooms, string floor, string totalFloors, string price,
@@ -328,6 +323,55 @@ namespace Fast4Sale
                     return rowsAffected > 0;
                 }
             }
+        }
+
+        public Advertisement GetAdvertisementById(int adId)
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sql = @"
+            SELECT a.*, u.Username 
+            FROM Advertisements a
+            LEFT JOIN Users u ON a.UserId = u.Id
+            WHERE a.Id = @adId";
+
+                using (var cmd = new SQLiteCommand(sql, connection))
+                {
+                    cmd.Parameters.AddWithValue("@adId", adId);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            var ad = new Advertisement
+                            {
+                                Id = Convert.ToInt32(reader["Id"]),
+                                UserId = Convert.ToInt32(reader["UserId"]),
+                                Username = reader["Username"].ToString(),
+                                Title = reader["Title"].ToString(),
+                                Address = reader["Address"].ToString(),
+                                Description = reader["Description"].ToString(),
+                                Area = reader["Area"].ToString(),
+                                Rooms = reader["Rooms"].ToString(),
+                                Floor = reader["Floor"].ToString(),
+                                TotalFloors = reader["TotalFloors"].ToString(),
+                                Price = reader["Price"].ToString(),
+                                Contact = reader["Contact"].ToString(),
+                                Phone = reader["Phone"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Type = reader["Type"].ToString(),
+                                CreatedDate = Convert.ToDateTime(reader["CreatedDate"])
+                            };
+
+                            return ad;
+                        }
+                    }
+                }
+            }
+
+            return null;
         }
 
         // Поиск объявлений

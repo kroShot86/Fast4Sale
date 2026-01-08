@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Fast4Sale
 {
-    /// <summary>
-    /// Логика взаимодействия для Spisok_ob.xaml
-    /// </summary>
     public partial class Spisok_ob : Window
     {
         public Spisok_ob()
@@ -25,7 +22,7 @@ namespace Fast4Sale
             LoadAdvertisements();
         }
 
-        private void AddCard(string title, string address, string price)
+        private void AddCard(Advertisement ad)
         {
             Border card = new Border
             {
@@ -59,7 +56,7 @@ namespace Fast4Sale
 
             TextBlock titleText = new TextBlock
             {
-                Text = title,
+                Text = ad.Title,
                 FontSize = 16,
                 FontWeight = FontWeights.Bold,
                 Foreground = Brushes.White
@@ -67,14 +64,14 @@ namespace Fast4Sale
 
             TextBlock addressText = new TextBlock
             {
-                Text = address,
+                Text = ad.Address,
                 Foreground = new SolidColorBrush(Color.FromRgb(203, 213, 225)),
                 Margin = new Thickness(0, 5, 0, 0)
             };
 
             TextBlock priceText = new TextBlock
             {
-                Text = price,
+                Text = ad.Price + "₽",
                 FontSize = 14,
                 FontWeight = FontWeights.Bold,
                 Foreground = new SolidColorBrush(Color.FromRgb(16, 185, 129)),
@@ -93,7 +90,8 @@ namespace Fast4Sale
 
             details.Click += (s, e) =>
             {
-                MessageBox.Show($"{title}\n{address}\n{price}", "Подробности");
+                AboutAd aboutWindow = new AboutAd(ad.Id);
+                aboutWindow.ShowDialog();
             };
 
             info.Children.Add(titleText);
@@ -118,7 +116,7 @@ namespace Fast4Sale
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if(Global.ID != -1)
+            if (Global.ID != -1)
             {
                 New_ob new_Ob = new New_ob();
                 new_Ob.ShowDialog();
@@ -127,7 +125,7 @@ namespace Fast4Sale
             }
             else
             {
-                MessageBox.Show("Только авторизированные пользователи могут выстявлять недвижимость");
+                MessageBox.Show("Только авторизированные пользователи могут выставлять недвижимость");
             }
         }
 
@@ -135,18 +133,15 @@ namespace Fast4Sale
         {
             BD bd = new BD();
 
-            List<Advertisement> ads = bd.GetAllAdvertisements(); // Используй новый метод из BD
+            List<Advertisement> ads = bd.GetAllAdvertisements();
 
-            // Очищаем список
             ListPanel.Children.Clear();
 
-            // Добавляем карточки из БД
             foreach (var ad in ads)
             {
-                AddCard(ad.Title, ad.Address, ad.Price.ToString() + "₽");
+                AddCard(ad);
             }
 
-            // Если нет объявлений
             if (ads.Count == 0)
             {
                 TextBlock noAds = new TextBlock
