@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,13 +43,33 @@ namespace Fast4Sale
             grid.ColumnDefinitions.Add(col1);
             grid.ColumnDefinitions.Add(col2);
 
+            Image img = new Image
+            {
+                Width = 120,
+                Height = 90,
+                Stretch = Stretch.UniformToFill
+            };
+
+            if (ad.PhotoData != null && ad.PhotoData.Length > 0)
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.StreamSource = new MemoryStream(ad.PhotoData);
+                bitmap.EndInit();
+                bitmap.Freeze();
+
+                img.Source = bitmap;
+            }
+
             Border image = new Border
             {
                 Width = 120,
                 Height = 90,
-                Background = new SolidColorBrush(Color.FromRgb(71, 85, 105)),
                 CornerRadius = new CornerRadius(6),
-                Margin = new Thickness(0, 0, 15, 0)
+                Margin = new Thickness(0, 0, 15, 0),
+                Child = img,
+                ClipToBounds = true
             };
             Grid.SetColumn(image, 0);
 
@@ -158,7 +179,6 @@ namespace Fast4Sale
 
                     if (success)
                     {
-                        MessageBox.Show("Объявление удалено");
                         LoadAdvertisements();
                     }
                     else

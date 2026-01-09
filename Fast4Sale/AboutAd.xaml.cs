@@ -49,6 +49,15 @@ namespace Fast4Sale
                     ContactBox.Text = ad.Contact;
                     PhoneBox.Text = ad.Phone;
                     EmailBox.Text = ad.Email;
+
+                    if (ad.PhotoData != null)
+                    {
+                        AdImage.Source = ByteArrayToImage(ad.PhotoData);
+                    }
+                    else
+                    {
+                        AdImage.Source = null;
+                    }
                 }
                 else
                 {
@@ -59,6 +68,23 @@ namespace Fast4Sale
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+
+        private BitmapImage ByteArrayToImage(byte[] bytes)
+        {
+            if (bytes == null || bytes.Length == 0)
+                return null;
+
+            using (var ms = new System.IO.MemoryStream(bytes))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = ms;
+                image.EndInit();
+                image.Freeze();
+                return image;
             }
         }
 
