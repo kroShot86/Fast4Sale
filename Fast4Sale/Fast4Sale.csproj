@@ -75,6 +75,9 @@
     <Compile Include="Spisok_ob.xaml.cs">
       <DependentUpon>Spisok_ob.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Write.xaml.cs">
+      <DependentUpon>Write.xaml</DependentUpon>
+    </Compile>
     <Page Include="AboutAd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +107,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Spisok_ob.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Write.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

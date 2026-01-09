@@ -54,9 +54,6 @@ namespace Fast4Sale
                     FloorBox.Text = ad.Floor;
                     TotalFloorsBox.Text = ad.TotalFloors;
                     PriceBox.Text = ad.Price;
-                    ContactBox.Text = ad.Contact;
-                    PhoneBox.Text = ad.Phone;
-                    EmailBox.Text = ad.Email;
 
                     foreach (ComboBoxItem item in TypeBox.Items)
                     {
@@ -128,7 +125,7 @@ namespace Fast4Sale
         {
             if (Name.Text == "" || AddressBox.Text == "" || Description.Text == "" ||
                 TypeBox.SelectedItem == null || AreaBox.Text == "" || RoomsBox.Text == "" ||
-                PriceBox.Text == "" || ContactBox.Text == "" || PhoneBox.Text == "")
+                PriceBox.Text == "")
             {
                 MessageBox.Show("Заполните обязательные данные");
                 return;
@@ -156,9 +153,6 @@ namespace Fast4Sale
                         floor: FloorBox.Text.Trim(),
                         totalFloors: TotalFloorsBox.Text.Trim(),
                         price: PriceBox.Text.Trim(),
-                        contact: ContactBox.Text.Trim(),
-                        phone: PhoneBox.Text.Trim(),
-                        email: EmailBox.Text.Trim(),
                         type: selectedType,
                         photo: selectedPhoto
                     );
@@ -185,9 +179,6 @@ namespace Fast4Sale
                         floor: FloorBox.Text.Trim(),
                         totalFloors: TotalFloorsBox.Text.Trim(),
                         price: PriceBox.Text.Trim(),
-                        contact: ContactBox.Text.Trim(),
-                        phone: PhoneBox.Text.Trim(),
-                        email: EmailBox.Text.Trim(),
                         type: selectedType,
                         photo: selectedPhoto
                     );

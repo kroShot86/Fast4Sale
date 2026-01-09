@@ -15,11 +15,14 @@
                 
                 <TextBlock Text="Регистрация" FontSize="28" FontWeight="SemiBold" Margin="0,0,0,20" HorizontalAlignment="Center"/>
 
-                <TextBlock Text="Логин"/>
+                <TextBlock Text="Имя пользователя"/>
                 <TextBox x:Name="Login" Margin="0,5,0,10"/>
 
                 <TextBlock Text="Email"/>
                 <TextBox x:Name="Email" Margin="0,5,0,10"/>
+
+                <TextBlock Text="Номер телефона"/>
+                <TextBox x:Name="PhoneNumber" Margin="0,5,0,10"/>
 
                 <TextBlock Text="Пароль"/>
                 <TextBox x:Name="Parol" Margin="0,5,0,10"/>

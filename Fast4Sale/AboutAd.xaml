@@ -86,27 +86,12 @@
 
                     <Border BorderBrush="#334155" BorderThickness="0,0,0,1" Padding="0,0,0,20" Margin="0,0,0,20">
                         <StackPanel>
-                            <TextBlock Text="Цена и контакты" FontSize="16" FontWeight="SemiBold" Foreground="White" Margin="0,0,0,15"/>
+                            <TextBlock Text="Цена" FontSize="16" FontWeight="SemiBold" Foreground="White" Margin="0,0,0,15"/>
 
                             <WrapPanel>
                                 <StackPanel Width="300" Margin="0,0,30,15">
                                     <TextBlock Text="Цена (₽)" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
                                     <TextBlock x:Name="PriceBox" Height="40" FontSize="14" FontWeight="Bold" Foreground="#10B981" Background="#334155"/>
-                                </StackPanel>
-
-                                <StackPanel Width="300" Margin="0,0,0,15">
-                                    <TextBlock Text="Контактное лицо" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
-                                    <TextBlock x:Name="ContactBox" Height="40" FontSize="14" Background="#334155" Foreground="White"/>
-                                </StackPanel>
-
-                                <StackPanel Width="300" Margin="0,0,30,0">
-                                    <TextBlock Text="Телефон" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
-                                    <TextBlock x:Name="PhoneBox" Height="40" FontSize="14" Background="#334155" Foreground="White"/>
-                                </StackPanel>
-
-                                <StackPanel Width="300" Margin="0,0,0,0">
-                                    <TextBlock Text="Email" FontSize="13" Margin="0,0,0,5" Foreground="#CBD5E1"/>
-                                    <TextBlock x:Name="EmailBox" Height="40" FontSize="14" Background="#334155" Foreground="White"/>
                                 </StackPanel>
                             </WrapPanel>
                         </StackPanel>
@@ -119,7 +104,7 @@
                     </Border>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button x:Name="Write" Content="Связаться с продавцом" Width="210" Height="50" Background="#10B981" Foreground="White" FontSize="16" FontWeight="Bold" Margin="0,0,15,0"/>
+                        <Button x:Name="Write" Content="Связаться с продавцом" Width="210" Height="50" Background="#10B981" Foreground="White" FontSize="16" FontWeight="Bold" Margin="0,0,15,0" Click="Write_Click"/>
                         <Button x:Name="Cancel" Content="Вернуться к объявлениям" Width="210" Height="50" Background="Red" Foreground="White" FontSize="16" FontWeight="Bold" Margin="0,0,15,0" Click="Cancel_Click"/>
                     </StackPanel>
 

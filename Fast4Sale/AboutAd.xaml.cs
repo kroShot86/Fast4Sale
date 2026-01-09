@@ -37,6 +37,9 @@ namespace Fast4Sale
 
                 if (ad != null)
                 {
+                    if (ad.UserId == Global.ID)
+                        Write.Visibility = Visibility.Collapsed;
+
                     Name.Text = ad.Title;
                     Type.Text = ad.Type;
                     AddressBox.Text = ad.Address;
@@ -46,9 +49,6 @@ namespace Fast4Sale
                     FloorBox.Text = ad.Floor;
                     TotalFloorsBox.Text = ad.TotalFloors;
                     PriceBox.Text = ad.Price + "₽";
-                    ContactBox.Text = ad.Contact;
-                    PhoneBox.Text = ad.Phone;
-                    EmailBox.Text = ad.Email;
 
                     if (ad.PhotoData != null)
                     {
@@ -93,5 +93,10 @@ namespace Fast4Sale
             this.Close();
         }
 
+        private void Write_Click(object sender, RoutedEventArgs e)
+        {
+            Write write = new Write(advertisementId);
+            write.ShowDialog();
+        }
     }
 }
