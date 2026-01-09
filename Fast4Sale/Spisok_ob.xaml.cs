@@ -16,6 +16,7 @@ namespace Fast4Sale
 {
     public partial class Spisok_ob : Window
     {
+
         public Spisok_ob()
         {
             InitializeComponent();
@@ -206,28 +207,53 @@ namespace Fast4Sale
         {
             BD bd = new BD();
 
-            List<Advertisement> ads = bd.GetAllAdvertisements();
+            string type = (TypeCombo.SelectedItem as ComboBoxItem)?.Content.ToString();
+            string minPrice = MinPrice.Text;
+            string maxPrice = MaxPrice.Text;
+
+            List<Advertisement> ads = bd.SearchAdvertisements(
+                searchTerm: "",
+                minPrice: minPrice,
+                maxPrice: maxPrice,
+                type: type
+            );
+
+            switch (SortCombo.SelectedIndex)
+            {
+                case 1:
+                    ads = ads.OrderBy(a => int.Parse(a.Price)).ToList();
+                    break;
+
+                case 2:
+                    ads = ads.OrderByDescending(a => int.Parse(a.Price)).ToList();
+                    break;
+            }
 
             ListPanel.Children.Clear();
 
             foreach (var ad in ads)
-            {
                 AddCard(ad);
-            }
 
             if (ads.Count == 0)
             {
-                TextBlock noAds = new TextBlock
+                ListPanel.Children.Add(new TextBlock
                 {
-                    Text = "Объявлений пока нет",
+                    Text = "Ничего не найдено",
                     Foreground = Brushes.White,
                     FontSize = 16,
                     HorizontalAlignment = HorizontalAlignment.Center,
-                    Margin = new Thickness(0, 20, 0, 0)
-                };
-                ListPanel.Children.Add(noAds);
+                    Margin = new Thickness(20)
+                });
             }
         }
+
+        private void FiltersChanged(object sender, EventArgs e)
+        {
+            if (IsLoaded)
+                LoadAdvertisements();
+        }
+
+
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {

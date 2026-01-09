@@ -16,23 +16,24 @@
                 <Button x:Name="Add" Content="➕ Добавить" Width="120" Height="25" Background="#10B981" Foreground="White" FontWeight="Bold" Margin="0,0,10,0" Click="Add_Click"/>
 
                 <TextBlock Text="Тип:" VerticalAlignment="Center" Margin="10,0,10,0" Foreground="White"/>
-                <ComboBox Width="100" Height="30" SelectedIndex="0" Background="#334155" Foreground="Black" FontSize="15">
+                <ComboBox x:Name="TypeCombo" Width="100" Height="30" SelectedIndex="0" Background="#334155" Foreground="Black" FontSize="15" SelectionChanged="FiltersChanged">
                     <ComboBoxItem Content="Все" Foreground="Black" FontSize="15"/>
                     <ComboBoxItem Content="Квартира" Foreground="Black" FontSize="15"/>
                     <ComboBoxItem Content="Дом" Foreground="Black" FontSize="15"/>
                 </ComboBox>
 
                 <TextBlock Text="Сортировка:" VerticalAlignment="Center" Margin="20,0,10,0" Foreground="White"/>
-                <ComboBox Width="100" Height="30" Background="#334155" Foreground="Black" FontSize="15">
-                    <ComboBoxItem Content="По возрастанию" FontSize="15" Foreground="Black"/>
-                    <ComboBoxItem Content="По убыванию" FontSize="15" Foreground="Black"/>
+                <ComboBox x:Name="SortCombo" SelectedIndex="0" Width="100" Height="30" Background="#334155" Foreground="Black" FontSize="15" SelectionChanged="FiltersChanged">
+                    <ComboBoxItem Content="По умолчанию" FontSize="15" Foreground="Black"/>
+                    <ComboBoxItem Content="Цена ↑" FontSize="15" Foreground="Black"/>
+                    <ComboBoxItem Content="Цена ↓" FontSize="15" Foreground="Black"/>
                 </ComboBox>
 
                 <TextBlock Text="Стоимость от" VerticalAlignment="Center" Margin="8,0,10,0" Foreground="White"/>
-                <TextBox Width="80" Height="30" Background="#334155" Foreground="White" TextAlignment="Center" FontSize="16" PreviewTextInput="OnlyNum"/>
+                <TextBox x:Name="MinPrice" Width="80" Height="30" Background="#334155" Foreground="White" TextAlignment="Center" FontSize="16" PreviewTextInput="OnlyNum" TextChanged="FiltersChanged"/>
                 
                 <TextBlock Text="до" VerticalAlignment="Center" Margin="5,0,5,0" Foreground="White"/>
-                <TextBox Width="80" Height="30" Background="#334155" Foreground="White" TextAlignment="Center" FontSize="16" PreviewTextInput="OnlyNum"/>
+                <TextBox x:Name="MaxPrice" Width="80" Height="30" Background="#334155" Foreground="White" TextAlignment="Center" FontSize="16" PreviewTextInput="OnlyNum" TextChanged="FiltersChanged"/>
 
                 <Button x:Name="Home" Width="121" Height="35" Background="#3B82F6" Foreground="White" FontSize="14" FontWeight="SemiBold" BorderThickness="0" Margin="10,0,10,0" Cursor="Hand" Click="Home_Click">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
