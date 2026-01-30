@@ -44,7 +44,6 @@ namespace Fast4Sale
         {
             Reg_Okno reg_okno = new Reg_Okno();
             reg_okno.ShowDialog();
-            
         }
 
         private void Log_Click(object sender, RoutedEventArgs e)
@@ -59,7 +58,6 @@ namespace Fast4Sale
                 BD bd = new BD();
                 NikName.Text = "Добро пожаловать " + bd.GetUsername(Global.ID);
             }
-            
         }
 
         private void user_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -71,20 +69,67 @@ namespace Fast4Sale
             MessageBox.Show(allUsersText, "Все пользователи");
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        private void UserMenuButton_Click(object sender, RoutedEventArgs e)
         {
-            Global.ID = -1;
-
-            p_reg.Visibility = Visibility.Collapsed;
-            p_nereg.Visibility = Visibility.Visible;
+            UserMenuButton.ContextMenu.IsOpen = true;
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            BD bd = new BD();
-            bd.DeleteUserById(Global.ID);
-            p_reg.Visibility = Visibility.Collapsed;
-            p_nereg.Visibility = Visibility.Visible;
+            MessageBoxResult result = MessageBox.Show(
+                "Вы уверены, что хотите выйти из аккаунта?",
+                "Подтверждение выхода",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Global.ID = -1;
+                p_reg.Visibility = Visibility.Collapsed;
+                p_nereg.Visibility = Visibility.Visible;
+
+                MessageBox.Show("Вы успешно вышли из аккаунта.", "Выход",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(
+                "⚠ ВНИМАНИЕ!\n\nУдаление аккаунта приведет к:\n• Безвозвратному удалению всех данных\n• Удалению всех ваших объявлений\n• Невозможности восстановления аккаунта\n\nВы уверены, что хотите удалить аккаунт?",
+                "Подтверждение удаления аккаунта",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                MessageBoxResult finalResult = MessageBox.Show(
+                    "Это последнее предупреждение! Аккаунт будет удален навсегда.\n\nВведите 'УДАЛИТЬ' для подтверждения:",
+                    "Финальное подтверждение",
+                    MessageBoxButton.OKCancel,
+                    MessageBoxImage.Exclamation);
+
+                if (finalResult == MessageBoxResult.OK)
+                {
+                    try
+                    {
+                        BD bd = new BD();
+                        bd.DeleteUserById(Global.ID);
+
+                        Global.ID = -1;
+                        p_reg.Visibility = Visibility.Collapsed;
+                        p_nereg.Visibility = Visibility.Visible;
+
+                        MessageBox.Show("Аккаунт успешно удален.", "Удаление",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при удалении аккаунта: {ex.Message}", "Ошибка",
+                            MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
         }
     }
 }

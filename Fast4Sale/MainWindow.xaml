@@ -20,8 +20,23 @@
                 </StackPanel>
                 <StackPanel x:Name="p_reg" Visibility="Collapsed" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0">
                     <TextBlock x:Name="NikName" Text="Добро пожаловать " Background="Transparent" Foreground="#FBBF24" Margin="50,10,30,5" HorizontalAlignment="Right" FontSize="18"/>
-                    <Button x:Name="Exit" Content="Выйти из аккаунта"  Background="Transparent" Foreground="#60A5FA" BorderBrush="#60A5FA" BorderThickness="1" FontSize="18" Click="Exit_Click"/>
-                    <Button x:Name="Delete" Content="Удалить аккаунт"  Background="#3B82F6" Foreground="White" BorderThickness="0" FontSize="18" Margin="10,0,0,0" Click="Delete_Click"/>
+                    <Button x:Name="UserMenuButton" Content="👤 Меню пользователя" Background="Transparent" Foreground="#60A5FA" BorderBrush="#60A5FA" BorderThickness="1" FontSize="18" Click="UserMenuButton_Click">
+                        <Button.ContextMenu>
+                            <ContextMenu x:Name="UserContextMenu" Background="#1E293B" BorderBrush="#3B82F6">
+                                <MenuItem Header="Выйти из аккаунта" Foreground="#F8FAFC" Background="Transparent" BorderBrush="#3B82F6" Click="ExitMenuItem_Click">
+                                    <MenuItem.Icon>
+                                        <TextBlock Text="🚪" FontSize="14"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <Separator Background="#3B82F6"/>
+                                <MenuItem Header="Удалить аккаунт" Foreground="#EF4444" Background="Transparent" BorderBrush="#3B82F6" Click="DeleteMenuItem_Click">
+                                    <MenuItem.Icon>
+                                        <TextBlock Text="🗑️" FontSize="14"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>
